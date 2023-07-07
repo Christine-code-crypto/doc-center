@@ -1,0 +1,17 @@
+<!-- extend base template -->
+{% extends 'core/base.html' %}
+
+<!-- title -->
+{% block title %} Document Details {% endblock %}
+
+<!-- bread crumbs -->
+{% block crumbs %} {{document.name}} {% endblock %}
+
+<!-- content for the body -->
+{% block content %}
+    
+<div>
+    document details
+</div>
+
+{% endblock %}

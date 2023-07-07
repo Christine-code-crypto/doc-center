@@ -1,0 +1,85 @@
+<!-- extend base template -->
+{% extends 'core/base.html' %}
+
+<!-- title -->
+{% block title %} Documents {% endblock %}
+
+<!-- bread crumbs -->
+{% block crumbs %} Library {% endblock %}
+
+<!-- content for the body -->
+{% block content %}
+
+<!-- search bar -->
+<div class="w-full mb-4 flex items-center justify-center mx-auto">
+    <form action="{% url 'library:search-documents' %}" value="{{request.GET.q}}" method="get" class="w-full mx-auto text-lg shadow-md border-transparent rounded-lg">
+        <input type="text" placeholder="Search documents" value="{{request.GET.q}}" name="search" class="w-full rounded-lg p-4 text-xl" >
+        <!-- <input type="submit" value="Search" name="submit"> -->
+    </form>
+</div>
+
+<!-- filter returned books, all books, overdue books -->
+<!-- <div class="flex justify-between items-center mb-3">
+    <div class="flex items-center space-x-6">
+        <form action="{% url 'library:search-documents' %}" method="get" value="{{category.name}}" class="bg-white rounded-lg p-2 shadow-md flex gap-2 cursor-pointer">
+            <input type="submit" name="search" value="returned"/>
+            <h3 class="text-blue-600">Returned books</h3>
+        </form> 
+    </div> 
+</div> -->
+
+
+<!-- <div class="mt-6"> -->
+     {% if searchRequest %}
+       {% if documents %}
+            <h3>Results for {{query}}</h3>
+        {% else %}
+            <h3 class="text-2xl font-semibold">Did not find any documents for <span class="text-blue-600">{{query}}</span></h3>
+       {% endif %}
+     {% endif %}
+  
+    {% if documents %}
+    <div class="">
+        <!-- loop documents -->
+            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead class="bg-blue-600 dark:bg-gray-800">
+                    <tr>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Id</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Title</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Author</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Issued_to</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Date Borrowed</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Due Date</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Issued by</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Date Returned</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right text-black dark:text-gray-400">Receive Back</th>
+                        <!-- <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Document Actions</th> -->
+                    </tr>
+                </thead>
+
+                <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700  shadow-md rounded-sm">
+                    {% for document in documents %}
+                      <tr>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ document.id }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ document.title }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ document.author }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ document.issued_to }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ document.date_borrowed }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ document.due_back }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ document.issuing_officer.username }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ document.date_returned }}</td>
+                         <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap"> 
+                            <a href="{% url 'library:return-book' document.id %}" class="text-blue-600 text-lg" >Receive Back</a> 
+                        </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+    {% else %}
+    <div class="mt-3">
+        <h3 class="text-2xl font-semibold ">No documents available</h3>
+    </div>
+    {% endif %}
+
+{% endblock %}

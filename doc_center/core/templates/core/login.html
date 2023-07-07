@@ -1,0 +1,29 @@
+<!-- extend base template -->
+{% extends 'core/base.html' %}
+
+<!-- title -->
+{% block title %} Login {% endblock %}
+
+<!-- bread crumbs -->
+{% block crumbs %} Login {% endblock %}
+
+<!-- content for the body -->
+{% block content %}
+
+<section class="h-96">
+
+<div class="w-1/2 mx-auto mt-60">
+    <form action="" method="post" class="w-full">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="flex justify-end w-full">
+                <button class="bg-blue-500 text-white w-full p-2 rounded-md ">Login</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

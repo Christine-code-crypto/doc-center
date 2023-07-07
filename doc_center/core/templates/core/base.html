@@ -1,0 +1,93 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <title>{% block title %}{% endblock %} || Document Center</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+	<body class="bg-gray-200 font-serif leading-normal tracking-normal overflow-x-hidden">
+        {% block scripts %}{% endblock %}
+        <section class="flex gap-5">
+            <aside class="bg-white shadow-xl w-64">
+                <div class="sticky top-0">
+
+                      <div class="p-4 border-b-2 border-b-gray-300">
+                    <a href="/" class="font-semibold text-2xl" >Docs Center</a>
+                </div>
+
+                <nav class="p-4 w-full">
+                    <!-- navigation links -->
+                    <ul class="">
+                        <a href="/" class="text-sm font-medium text-black dark:text-white mb-4 active::text-red-500">
+                           <li class="mb-2 bg-blue-500 p-2 rounded-md w-full cursor-pointer focus:bg-blue-900">Dashboard</li>
+                        </a>
+                        <a href="{% url 'services:index' %}" class="text-sm font-medium text-black dark:text-white mb-4">
+                            <li class="mb-2 bg-blue-500 p-2 rounded-md w-full cursor-pointer focus:bg-blue-900">Services</li>
+                        </a>
+                        <a href="{% url 'services:new-request' %}" class="text-sm font-medium text-black dark:text-white mb-4">
+                            <li class="mb-2 bg-blue-500 p-2 rounded-md w-full cursor-pointer focus:bg-blue-900">New Service</li>
+                        </a>
+                        <a href="{% url 'library:index' %}" class="text-sm font-medium text-black dark:text-white mb-4">
+                            <li class="mb-2 bg-blue-500 p-2 rounded-md w-full cursor-pointer focus:bg-blue-900">Books</li>
+                        </a>
+                        <a href="{% url 'library:new-document' %}" class="text-sm font-medium text-black dark:text-white mb-4">
+                            <li class="mb-2 bg-blue-500 p-2 rounded-md w-full cursor-pointer focus:bg-blue-900">Lend Book</li>
+                        </a>
+                    </ul>
+                </nav>
+               
+                </div>
+            </aside>
+
+            <section class="container mx-auto">
+                <!-- navigation -->
+                <nav class="w-full flex justify-between items-center p-4 sticky top-0 container mx-auto border-b-2 border-b-gray-300 z-20 bg-gray-200">
+                            <div>
+                        <h3 class="text-lg font-medium uppercase">{% block crumbs %}{% endblock %}</h3>
+                    </div>
+
+                    <!-- navigation list -->
+                    <ul class="flex items-center space-x-6">
+                        {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'admin:index' %}" class="text-sm font-semibold bg-blue-500 hover:bg-blue-700 text-white rounded-lg p-2">Admin Dashboard</a></li>  
+                        <li><a href="{% url 'logout' %}" class="text-sm font-semibold bg-red-400 hover:bg-red-700 text-white rounded-lg p-2">Logout</a></li> 
+                        {% else %}
+                            <li><a href="{% url 'core:login' %}" class="text-sm font-semibold bg-blue-500 hover:bg-blue-700 text-white rounded-lg p-2">Login</a></li>
+                            <li><a href="{% url 'admin:index' %}" class="text-sm font-semibold bg-blue-500 hover:bg-blue-700 text-white rounded-lg p-2">Admin</a></li>  
+                        {% endif %}                  
+                    </ul>
+                    </nav>
+
+                <!-- main body -->
+                <section class="min-h-screen">
+                    <!-- loader -->
+                   <div class="h-screen flex justify-center items-center  z-10" id="loading_container" >
+                      <!-- <div class="w-64 h-64 rounded-full bg-blue-600 border-solid " id="spinner" >Loading .....</div> -->
+                      <h1>Loading.......</h1>
+                    </div>
+
+			        <section class="min-h-screen p-4">
+                       {% block content %}{% endblock %}
+			        </section>
+		           </div>
+                </section>
+
+                <!-- footer -->
+                <footer class="container mx-auto border-t border-t-gray-500 p-4 flex justify-between items-center">
+                    <h3 class="text-sm font-medium">Lake Basin Development Authority</h3>
+                    <small class="text-lg font-medium" id="copyright">Copyright  </small>
+                </footer>
+
+            </section>
+
+        </section>
+
+         <!-- javascript -->
+    <script src="/static/js/app.js"></script>
+		
+	</body>
+</html>

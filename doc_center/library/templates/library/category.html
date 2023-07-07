@@ -1,0 +1,22 @@
+<!-- extend base template -->
+{% extends 'core/base.html' %}
+
+<!-- title -->
+{% block title %} Category {% endblock %}
+
+<!-- bread crumbs -->
+{% block crumbs %} {{category}} {% endblock %}
+
+<!-- content for the body -->
+{% block content %}
+    
+<div>
+    documents by category
+    <h3>found {{documents}}</h3>
+
+    {% for document in documents.documents %}
+      {{document.name}}
+    {% endfor %}
+</div>
+
+{% endblock %}
