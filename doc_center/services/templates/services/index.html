@@ -18,32 +18,32 @@
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead class="bg-blue-600 dark:bg-gray-800">
                     <tr>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Service Type</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Date</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Title</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Department</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Customer's name</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Number of pages</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Quantity Rate</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Total</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Customers Signature</th>
-                        <th scope="col" class="px-6 py-3.5 text-lg font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Served by</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right  ">Service Type</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right">Date</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right ">Title</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right ">Department</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right ">Customer's name</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right">Number of pages</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right ">Quantity Rate</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right ">Total</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right ">Customers Signature</th>
+                        <th scope="col" class="px-6 py-3.5 text-sm font-normal text-left rtl:text-right">Served by</th>
                     </tr>
                 </thead>
 
                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700  shadow-md rounded-sm">
                     {% for service in services %}
                       <tr>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap">{{ service.type.name }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.date_created }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.title_of_document }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.department }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap">{{ service.customers_name }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap">{{ service.no_of_pages }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap">{{ service.quantity_rate }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.total }}</td>
-                        <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap">{{ service.customers_signature }}</td>
-                         <td class="px-6 py-3.5 text-lg font-medium text-left rtl:text-right whitespace-nowrap"> {{service.user.username}} </td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ service.type.name }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.date_created }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.title_of_document }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.department }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ service.customers_name }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ service.no_of_pages }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ service.quantity_rate }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap capitalize">{{ service.total }}</td>
+                        <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap">{{ service.customers_signature }}</td>
+                         <td class="px-6 py-3.5 text-sm font-medium text-left rtl:text-right whitespace-nowrap"> {{service.user.username}} </td>
                       
                       </tr>
                     {% endfor %}
